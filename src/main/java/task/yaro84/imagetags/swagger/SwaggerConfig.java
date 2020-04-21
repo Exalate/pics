@@ -14,11 +14,11 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig extends WebMvcConfigurationSupport {
-
     @Bean
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .select()                 .apis(RequestHandlerSelectors.basePackage("task.yaro84.imagetags.rest"))
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("task.yaro84.imagetags.rest"))
                 .paths(regex("/pictags.*"))
                 .build();
     }
@@ -29,5 +29,4 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
-
 }

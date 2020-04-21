@@ -9,5 +9,4 @@ public class ImageTagsApplication {
     public static void main(String[] args) {
         SpringApplication.run(ImageTagsApplication.class, args);
     }
-
 }

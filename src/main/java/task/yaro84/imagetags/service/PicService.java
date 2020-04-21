@@ -10,17 +10,14 @@ import java.util.List;
 public class PicService {
 
     public String addPic(byte[] img) {
-
-        QuickstartSample gServ = new QuickstartSample();
+        VisualInfo visInf = new VisualInfo();
         List<String> tagList = new ArrayList<>();
         try {
-            tagList = gServ.getImageTags(img);
+            tagList = visInf.getImageTags(img);
         } catch (Exception e) {
             e.printStackTrace();
         }
         Collections.sort(tagList);
         return tagList.toString();
     }
-
-
 }

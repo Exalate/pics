@@ -18,27 +18,21 @@ import java.util.List;
 import java.net.*;
 import java.io.*;
 
-public class QuickstartSample {
+public class VisualInfo {
 
     private List<String> list = new ArrayList<>();
 
     public List<String> getImageTags(byte[] imageIntoByte) throws Exception {
-
         try (ImageAnnotatorClient vision = ImageAnnotatorClient.create()) {
-
             ByteString imgBytes = ByteString.copyFrom(imageIntoByte);
-
             List<AnnotateImageRequest> requests = new ArrayList<>();
             Image img = Image.newBuilder().setContent(imgBytes).build();
-
             Feature feat = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
             AnnotateImageRequest request =
                     AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).build();
             requests.add(request);
-
             BatchAnnotateImagesResponse response = vision.batchAnnotateImages(requests);
             List<AnnotateImageResponse> responses = response.getResponsesList();
-
             for (AnnotateImageResponse res : responses) {
                 if (res.hasError()) {
                     System.out.printf("Error: %s\n", res.getError().getMessage());

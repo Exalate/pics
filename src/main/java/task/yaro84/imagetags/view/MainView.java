@@ -17,9 +17,7 @@ import java.io.ByteArrayInputStream;
 @Route
 public class MainView extends VerticalLayout {
     private final HeadComp headComp;
-
     private final ImageRepo imageRepo;
-
     private final Grid<ImageEnt> grid = new Grid<>(ImageEnt.class);
     private Binder<ImageEnt> binder = new Binder<>(ImageEnt.class);
 
@@ -27,13 +25,9 @@ public class MainView extends VerticalLayout {
     public MainView(ImageRepo imageRepo, HeadComp headComp) {
         this.imageRepo = imageRepo;
         this.headComp = headComp;
-
         add(this.headComp, grid);
-
         setupGridDefault();
-
         super.setHeight("100%");
-
     }
     private void setupGridDefault() {
         grid.setItems(this.imageRepo.findAll());
@@ -50,7 +44,6 @@ public class MainView extends VerticalLayout {
         imageRepo.delete(i);
         grid.setItems(this.imageRepo.findAll());
     }
-
     private Image getImageForGrid(byte[] b){
         StreamResource resource = new StreamResource("dummyImageName.jpg", () -> new ByteArrayInputStream(b));
         Image image = new Image(resource, "dummy image");

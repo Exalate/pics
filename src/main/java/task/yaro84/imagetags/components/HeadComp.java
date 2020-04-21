@@ -72,6 +72,7 @@ public class HeadComp extends VerticalLayout implements KeyNotifier {
                 return imageData;
             }
         } catch (Exception e){
+            e.printStackTrace();
         }
         return new byte[1];
     }
